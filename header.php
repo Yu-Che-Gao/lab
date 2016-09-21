@@ -46,13 +46,13 @@
           <a class="blog-nav-item <?php if($page=='honor_deeds') echo 'active'; ?>" href="<?php echo $href.'honor_deeds'; ?>">成員榮譽事項</a>
           <?php
 		  
-		  session_start();
-			if(isset($_SESSION['user'])){
-				echo '<a class="blog-nav-item navbar-right" href="logout.php">登出</a><a href="#" class="blog-nav-item navbar-right" >Welcome '.$_SESSION['user'].'</a>';
-			}
-			else{
-				echo '<a class="blog-nav-item navbar-right" data-toggle="modal" data-target="#login">登入</a>';			
-			}
+		  // session_start();
+			// if(isset($_SESSION['user'])){
+			// 	echo '<a class="blog-nav-item navbar-right" href="logout.php">登出</a><a href="#" class="blog-nav-item navbar-right" >Welcome '.$_SESSION['user'].'</a>';
+			// }
+			// else{
+			// 	echo '<a class="blog-nav-item navbar-right" data-toggle="modal" data-target="#login">登入</a>';			
+			// }
 		  ?>		  
         </nav>
       </div>
