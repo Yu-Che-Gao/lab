@@ -20,7 +20,7 @@
     <header>
       <div class="inner">
         <h1>智慧醫療暨大數據分析實驗室</h1>
-        <h2>V1</h2>
+        <h2>V1.0.0</h2>
         <a href="https://github.com/Yu-Che-Gao/lab" class="button"><small>View project on</small> GitHub</a>
       </div>
     </header>
@@ -34,7 +34,7 @@
 <h2>
 <a id="基本架構" class="anchor" href="#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%A7%8B" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>基本架構</h2>
 
-<pre><code>---index.php(主程式)
+<pre><code>--- index.php (主程式)
     |- js (放置所有js檔案)
     |- css (放置所有css檔案)
     |- img (放置所有img檔案)
@@ -45,25 +45,25 @@
 <a id="安裝方式" class="anchor" href="#%E5%AE%89%E8%A3%9D%E6%96%B9%E5%BC%8F" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>安裝方式</h2>
 
 <ol>
-<li>將lab資料夾放入wamp server之www資料夾底下</li>
-<li>將database資料夾下的lab20160921.sql匯入phpmyadmin</li>
-<li>電腦IP/lab 即為網址</li>
+<li>將 lab 資料夾放入 wamp server 之 www 資料夾底下</li>
+<li>將 database 資料夾下的 lab20160921.sql 匯入 phpmyadmin</li>
+<li>電腦 IP/lab 即為網址</li>
 </ol>
 
 <h2>
 <a id="indexphp技術細節" class="anchor" href="#indexphp%E6%8A%80%E8%A1%93%E7%B4%B0%E7%AF%80" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>index.php技術細節</h2>
 
-<p>連結網址到index.php時需傳入page參數, 例如：</p>
+<p>連結網址到index.php時需傳入page參數，例如：</p>
 
 <pre><code>http://192.168.137.16/lab?page=result
 </code></pre>
 
-<p>若無傳入參數,例如：</p>
+<p>若無傳入參數，例如：</p>
 
 <pre><code>http://192.168.137.16/lab
 </code></pre>
 
-<p>則index.php預設為page為first,等同於連結至</p>
+<p>則index.php預設為page為first，等同於連結至</p>
 
 <pre><code>http://192.168.137.16/lab?page=first
 </code></pre>
@@ -72,9 +72,9 @@
 <a id="未來網站規劃" class="anchor" href="#%E6%9C%AA%E4%BE%86%E7%B6%B2%E7%AB%99%E8%A6%8F%E5%8A%83" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>未來網站規劃</h2>
 
 <ol>
-<li>將後端技術全面替換為<a href="https://nodejs.org/en/">node.js</a>
+<li>將後端技術全面替換為 <a href="https://nodejs.org/en/">node.js</a>
 </li>
-<li>將前端技術替換為<a href="https://angular.io/">angular.js</a>
+<li>將前端技術替換為 <a href="https://angular.io/">angular.js</a>
 </li>
 <li>新增後臺管理介面</li>
 </ol>
