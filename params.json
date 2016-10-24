@@ -1,0 +1,6 @@
+{
+  "name": "智慧醫療暨大數據分析實驗室",
+  "tagline": "V1",
+  "body": "智慧醫療暨大數據分析實驗室網站\r\n===\r\n\r\n基本架構\r\n--------\r\n\r\n    ---index.php(主程式)\r\n        |- js (放置所有js檔案)\r\n        |- css (放置所有css檔案)\r\n        |- img (放置所有img檔案)\r\n        |- database (放置所有database檔案)\r\n\r\n安裝方式\r\n--------\r\n\r\n1. 將lab資料夾放入wamp server之www資料夾底下\r\n2. 將database資料夾下的lab20160921.sql匯入phpmyadmin\r\n3. 電腦IP/lab 即為網址\r\n\r\nindex.php技術細節\r\n--------\r\n\r\n連結網址到index.php時需傳入page參數, 例如：\r\n\r\n    http://192.168.137.16/lab?page=result\r\n\r\n若無傳入參數,例如：\r\n\r\n    http://192.168.137.16/lab\r\n\r\n則index.php預設為page為first,等同於連結至\r\n\r\n    http://192.168.137.16/lab?page=first\r\n\r\n未來網站規劃\r\n--------\r\n\r\n1. 將後端技術全面替換為<a href=\"https://nodejs.org/en/\">node.js</a>\r\n2. 將前端技術替換為<a href=\"https://angular.io/\">angular.js</a>\r\n3. 新增後臺管理介面",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
