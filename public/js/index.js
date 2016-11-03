@@ -21,7 +21,7 @@ myApp.config(function ($routeProvider) {
 });
 
 //置頂選單
-myApp.controller('headerController', ['$scope', '$route', function ($scope, $route) {
+myApp.controller('headerController', ['$scope', function ($scope) {
     $scope.headerObject = [
         { text: '首頁', href: '#/' },
         { text: '期刊論文', href: '#/periodical_article' },
