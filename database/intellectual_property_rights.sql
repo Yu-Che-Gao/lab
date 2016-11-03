@@ -1,2 +1,0 @@
-INSERT INTO intellectual_property_rights(type,name,country,number,member,owner,date) values('B','可程式化生理訊號閘道器','台灣','M412747	','湯秉宏、曾明性','湯秉宏、曾明性','100/08/16');
-INSERT INTO intellectual_property_rights(type,name,country,number,member,owner,date) values('B','睡眠障礙矯正輔助裝置','台灣','M425645	','湯秉宏、曾明性','湯秉宏、曾明性','01/04/01');
