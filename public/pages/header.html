@@ -1,7 +1,7 @@
 <div class="blog-masthead" ng-controller="headerController">
     <div class="container">
         <nav class="blog-nav">
-            <a class="blog-nav-item" ng-repeat="object in headerObject" ng-class="setActive('{{ object.href }}')" href="{{ object.href }}" ng-click="getPath()">{{ object.text }}</a>
+            <a class="blog-nav-item" ng-repeat="object in headerObject" ng-class="setActive('{{ object.href }}')" href="{{ object.href }}">{{ object.text }}</a>
         </nav>
     </div>
 </div>
