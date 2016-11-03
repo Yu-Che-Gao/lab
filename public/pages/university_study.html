@@ -1,0 +1,26 @@
+<div class="container" ng-controller="universityStudyController">
+
+  <!--標題-->
+  <ng-include src="'/pages/title.html'"></ng-include>
+
+  <div class="blog-post">
+    <table class="table table-striped">
+      <thead>
+        <th>年分</th>
+        <th>專題名稱</th>
+        <th>成員</th>
+      </thead>
+      <tbody>
+        <?php
+                $result=$conn->query("SELECT year,name,member FROM university_study");
+                while($row=$result->fetch_assoc()){
+                  echo '<tr><td>'.$row['year'].'</td>';
+				  echo '<td>'.$row['name'].'</td>';
+				  echo '<td>'.$row['member'].'</td></tr>';
+                }
+              ?>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

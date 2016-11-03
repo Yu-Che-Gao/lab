@@ -1,0 +1,26 @@
+<div class="container" ng-controller="periodicalArticleController">
+
+  <!--標題-->
+  <ng-include src="'/pages/title.html'"></ng-include>
+
+  <div class="row">
+
+    <div class="col-sm-12 blog-main">
+
+      <div class="blog-post">
+        <ol>
+          <?php
+                $result=$conn->query("SELECT content FROM periodical_article");
+                while($row=$result->fetch_assoc()){
+                  echo '<li>'.$row['content'].'</li><br/>';
+                }
+              ?>
+        </ol>
+
+      </div>
+      <!-- /.blog-sidebar -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container -->
+</div>

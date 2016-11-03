@@ -1,0 +1,33 @@
+<div class="container" ng-controller="resultController">
+
+    <!--標題-->
+    <ng-include src="'/pages/title.html'"></ng-include>
+
+    <div class="blog-post">
+        <table class="table table-striped">
+            <thead>
+                <th>類別</th>
+                <th>專利名稱</th>
+                <th>國別</th>
+                <th>專利號碼</th>
+                <th>發明人</th>
+                <th>專利權人</th>
+                <th>專利核准日期</th>
+            </thead>
+            <tbody>
+                <?php
+                      $result=$conn->query("SELECT type,name,country,number,member,owner,date FROM intellectual_property_rights");
+                      while($row=$result->fetch_assoc()){
+                        echo '<tr><td>'.$row['type'].'</td>';
+                        echo '<td>'.$row['name'].'</td>';
+                        echo '<td>'.$row['country'].'</td>';
+                        echo '<td>'.$row['number'].'</td>';
+                        echo '<td>'.$row['member'].'</td>';
+                        echo '<td>'.$row['owner'].'</td>';
+                        echo '<td>'.$row['date'].'</td></tr>';
+                      }
+                      ?>
+            </tbody>
+        </table>
+    </div>
+    </div>

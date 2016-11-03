@@ -1,0 +1,24 @@
+<div class="container" ng-controller="conferecePapersController">
+
+  <!--標題-->
+  <ng-include src="'/pages/title.html'"></ng-include>
+
+  <div class="row">
+
+    <div class="col-sm-12 blog-main">
+
+      <div class="blog-post">
+        <ol>
+          <?php
+                $result=$conn->query("SELECT content FROM conference_paper");
+                while($row=$result->fetch_assoc()){
+                  echo '<li>'.$row['content'].'</li><br/>';
+                }
+              ?>
+        </ol>
+
+      </div>
+
+    </div>
+  </div>
+</div>

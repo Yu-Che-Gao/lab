@@ -1,0 +1,31 @@
+<div class="container" ng-controller="thesisController">
+
+  <!--標題-->
+  <ng-include src="'/pages/title.html'"></ng-include>
+  
+  <div class="blog-post">
+    <table class="table table-striped">
+      <thead>
+        <th>日期</th>
+        <th>年級</th>
+        <th>學號</th>
+        <th>姓名</th>
+        <th>論文名稱</th>
+        <th>論文英文名稱</th>
+      </thead>
+      <tbody>
+        <?php
+                $result=$conn->query("SELECT date,department,number,student,name_chi,name_eng FROM thesis");
+                while($row=$result->fetch_assoc()){
+                  echo '<tr><td>'.$row['date'].'</td>';
+                  echo '<td>'.$row['department'].'</td>';
+                  echo '<td>'.$row['number'].'</td>';
+                  echo '<td>'.$row['student'].'</td>';
+                  echo '<td>'.$row['name_chi'].'</td>';
+                  echo '<td>'.$row['name_eng'].'</td></tr>';
+                }
+              ?>
+      </tbody>
+    </table>
+  </div>
+</div>
