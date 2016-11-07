@@ -14,4 +14,7 @@ db.connect(mongoURI, function (err) {
 app.use(express.static(__dirname + '/public'))
 app.use(require('./controllers'))
 app.set('view engine', 'pug')
+
+
+
 app.listen(port, () => { console.log('listening on port ' + port) })
