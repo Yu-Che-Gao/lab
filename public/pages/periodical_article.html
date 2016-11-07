@@ -9,12 +9,7 @@
 
       <div class="blog-post">
         <ol>
-          <?php
-                $result=$conn->query("SELECT content FROM periodical_article");
-                while($row=$result->fetch_assoc()){
-                  echo '<li>'.$row['content'].'</li><br/>';
-                }
-              ?>
+          <li ng-repeat="obj in allPeriodicalArticles">{{ obj.content }}</li>
         </ol>
 
       </div>

@@ -1,6 +1,7 @@
 var myApp = angular.module('myApp', ['ngRoute']);
+var apiURI = '/lab_api/v1';
 
-myApp.config(function ($routeProvider) {
+myApp.config(function($routeProvider) {
     $routeProvider.when('/', {
         templateUrl: 'pages/main.html'
     }).when('/periodical_article', {
@@ -21,7 +22,7 @@ myApp.config(function ($routeProvider) {
 });
 
 //置頂選單
-myApp.controller('headerController', ['$scope', function ($scope) {
+myApp.controller('headerController', ['$scope', function($scope) {
     $scope.headerObject = [
         { text: '首頁', href: '#/' },
         { text: '期刊論文', href: '#/periodical_article' },
@@ -32,7 +33,7 @@ myApp.controller('headerController', ['$scope', function ($scope) {
         { text: '成員榮譽事項', href: '#/honor_deeds' }
     ];
 
-    $scope.setActive = function (page) {
+    $scope.setActive = function(page) {
         var currentRoute = '';
         if (window.location.hash !== '') currentRoute = window.location.hash;
         else currentRoute = '#/';
@@ -41,43 +42,49 @@ myApp.controller('headerController', ['$scope', function ($scope) {
 }]);
 
 //首頁
-myApp.controller('mainController', ['$scope', function ($scope) {
+myApp.controller('mainController', ['$scope', function($scope) {
     $scope.title = '智慧醫療暨大數據分析實驗室';
     $scope.subTitle = 'Intelligent Healthcare and Big Data Analysis Laboratory';
 }]);
 
 //期刊論文
-myApp.controller('periodicalArticleController', ['$scope', function ($scope) {
+myApp.controller('periodicalArticleController', ['$scope', '$http', function($scope, $http) {
     $scope.title = '期刊論文';
     $scope.subTitle = 'Periodical Article';
+    $http.get(apiURI + '/periodical_article/select').then(function(response) {
+        $scope.allPeriodicalArticles = response.data;
+    });
 }]);
 
 //研討會論文
-myApp.controller('conferecePapersController', ['$scope', function ($scope) {
+myApp.controller('conferecePapersController', ['$scope', '$http', function($scope, $http) {
     $scope.title = '研討會論文';
     $scope.subTitle = 'Conference Papers';
+    $http.get(apiURI + '/conference_paper/select').then(function(response) {
+        $scope.allConferencePapers = response.data;
+    });
 }]);
 
 //研發成果智慧財產權
-myApp.controller('resultController', ['$scope', function ($scope) {
+myApp.controller('resultController', ['$scope', function($scope) {
     $scope.title = '研發成果智慧財產權';
     $scope.subTitle = 'Intellectual Property Rights';
 }]);
 
 //大專生專題成果
-myApp.controller('universityStudyController', ['$scope', function ($scope) {
+myApp.controller('universityStudyController', ['$scope', function($scope) {
     $scope.title = '大專生專題成果';
     $scope.subTitle = 'The Project Of University Graduating Students';
 }]);
 
 //研究生論文
-myApp.controller('thesisController', ['$scope', function ($scope) {
+myApp.controller('thesisController', ['$scope', function($scope) {
     $scope.title = '研究生論文';
     $scope.subTitle = 'Thesis';
 }]);
 
 //成員榮譽事項
-myApp.controller('honorDeedsController', ['$scope', function ($scope) {
+myApp.controller('honorDeedsController', ['$scope', function($scope) {
     $scope.title = '成員榮譽事項';
     $scope.subTitle = 'Honor Deeds';
 }]);
