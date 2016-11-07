@@ -15,19 +15,16 @@
                 <th>專利核准日期</th>
             </thead>
             <tbody>
-                <?php
-                      $result=$conn->query("SELECT type,name,country,number,member,owner,date FROM intellectual_property_rights");
-                      while($row=$result->fetch_assoc()){
-                        echo '<tr><td>'.$row['type'].'</td>';
-                        echo '<td>'.$row['name'].'</td>';
-                        echo '<td>'.$row['country'].'</td>';
-                        echo '<td>'.$row['number'].'</td>';
-                        echo '<td>'.$row['member'].'</td>';
-                        echo '<td>'.$row['owner'].'</td>';
-                        echo '<td>'.$row['date'].'</td></tr>';
-                      }
-                      ?>
+                <tr ng-repeat="obj in allResults">
+                    <td>{{ obj.type }}</td>
+                    <td>{{ obj.name }}</td>
+                    <td>{{ obj.country }}</td>
+                    <td>{{ obj.number }}</td>
+                    <td>{{ obj.member }}</td>
+                    <td>{{ obj.owner }}</td>
+                    <td>{{ obj.date }}</td>
+                </tr>
             </tbody>
         </table>
     </div>
-    </div>
+</div>

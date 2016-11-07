@@ -2,7 +2,7 @@
 
   <!--標題-->
   <ng-include src="'/pages/title.html'"></ng-include>
-  
+
   <div class="blog-post">
     <table class="table table-striped">
       <thead>
@@ -14,17 +14,14 @@
         <th>論文英文名稱</th>
       </thead>
       <tbody>
-        <?php
-                $result=$conn->query("SELECT date,department,number,student,name_chi,name_eng FROM thesis");
-                while($row=$result->fetch_assoc()){
-                  echo '<tr><td>'.$row['date'].'</td>';
-                  echo '<td>'.$row['department'].'</td>';
-                  echo '<td>'.$row['number'].'</td>';
-                  echo '<td>'.$row['student'].'</td>';
-                  echo '<td>'.$row['name_chi'].'</td>';
-                  echo '<td>'.$row['name_eng'].'</td></tr>';
-                }
-              ?>
+        <tr ng-repeat="obj in allThesis">
+          <td>{{ obj.date }}</td>
+          <td>{{ obj.department }}</td>
+          <td>{{ obj.number }}</td>
+          <td>{{ obj.student }}</td>
+          <td>{{ obj.name_chi }}</td>
+          <td>{{ obj.name_eng }}</td>
+        </tr>
       </tbody>
     </table>
   </div>

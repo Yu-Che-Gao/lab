@@ -11,15 +11,11 @@
         <th>成員</th>
       </thead>
       <tbody>
-        <?php
-                $result=$conn->query("SELECT year,name,member FROM university_study");
-                while($row=$result->fetch_assoc()){
-                  echo '<tr><td>'.$row['year'].'</td>';
-				  echo '<td>'.$row['name'].'</td>';
-				  echo '<td>'.$row['member'].'</td></tr>';
-                }
-              ?>
-          </tr>
+        <tr ng-repeat="obj in allStudys">
+          <td>{{ obj.year }}</td>
+          <td>{{ obj.name }}</td>
+          <td>{{ obj.member }}</td>
+        </tr>
       </tbody>
     </table>
   </div>

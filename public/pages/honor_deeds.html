@@ -4,27 +4,14 @@
   <ng-include src="'/pages/title.html'"></ng-include>
 
   <div class="row">
-
     <div class="col-sm-12 blog-main">
-
       <div class="blog-post">
         <p>
           <ol>
-            <?php
-                $result=$conn->query("SELECT content FROM honor_deeds ORDER BY id");
-                while($row=$result->fetch_assoc()){
-                  echo '<li>'.$row['content'].'</li><br/>';
-
-                }
-              ?>
+            <li ng-repeat="obj in allHonor">{{ obj.content }}</li>
           </ol>
         </p>
 
       </div>
-      <!-- /.blog-sidebar -->
-
     </div>
-    <!-- /.row -->
-
   </div>
-  <!-- /.container -->

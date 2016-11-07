@@ -66,25 +66,37 @@ myApp.controller('conferecePapersController', ['$scope', '$http', function($scop
 }]);
 
 //研發成果智慧財產權
-myApp.controller('resultController', ['$scope', function($scope) {
+myApp.controller('resultController', ['$scope', '$http', function($scope, $http) {
     $scope.title = '研發成果智慧財產權';
     $scope.subTitle = 'Intellectual Property Rights';
+    $http.get(apiURI + '/intellectual_property_rights/select').then(function(response) {
+        $scope.allResults = response.data;
+    });
 }]);
 
 //大專生專題成果
-myApp.controller('universityStudyController', ['$scope', function($scope) {
+myApp.controller('universityStudyController', ['$scope', '$http', function($scope, $http) {
     $scope.title = '大專生專題成果';
     $scope.subTitle = 'The Project Of University Graduating Students';
+    $http.get(apiURI + '/university_study/select').then(function(response) {
+        $scope.allStudys = response.data;
+    });
 }]);
 
 //研究生論文
-myApp.controller('thesisController', ['$scope', function($scope) {
+myApp.controller('thesisController', ['$scope', '$http', function($scope, $http) {
     $scope.title = '研究生論文';
     $scope.subTitle = 'Thesis';
+    $http.get(apiURI + '/thesis/select').then(function(response) {
+        $scope.allThesis = response.data;
+    });
 }]);
 
 //成員榮譽事項
-myApp.controller('honorDeedsController', ['$scope', function($scope) {
+myApp.controller('honorDeedsController', ['$scope', '$http', function($scope, $http) {
     $scope.title = '成員榮譽事項';
     $scope.subTitle = 'Honor Deeds';
+    $http.get(apiURI + '/honor_deeds/select').then(function(response) {
+        $scope.allHonor = response.data;
+    });
 }]);
