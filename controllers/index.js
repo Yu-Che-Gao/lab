@@ -8,7 +8,7 @@ router.get('/lab_api/doc', (req, res) => res.redirect('/doc'))
 
 /**
  * @api {get} /lab_api/:collection/select Request Collection Info
- * @apiName GetCollection
+ * @apiName SelectCollection
  * @apiGroup Collection
  * @apiVersion 1.0.0
  * 
@@ -27,6 +27,69 @@ router.get('/lab_api/v1/:collection/select', (req, res) => {
     try {
         let collection = db.get().collection(req.params.collection)
         collection.find().toArray((err, docs) => res.send(docs))
+    } catch (error) {
+        res.send('{"error":"' + error.message + '"}')
+    }
+})
+
+/**
+ * @api {post} /lab_api/:collection/update Request to Update Collection
+ * @apiName UpdateCollection
+ * @apiGroup Collection
+ * @apiVersion 1.0.0
+ * 
+ * @apiParam {Number} id new id
+ * @apiParam {String} time new submit time
+ * 
+ * @apiSuccess {json} info info after update
+ * @apiError {json} error Error message of collection update
+ * @apiSampleRequest /lab_api/v1/thesis/update
+ * 
+ * @apiSuccessExample Example Data on Success
+ * { "ok": 1, "nModified": 1, "n": 1 }
+ * 
+ * @apiErrorExample Example Data on Error
+ * { "error": "Cannot read property 'id' of undefined" }
+ */
+router.post('/lab_api/v1/:collection/update', (req, res) => {
+    try {
+        let collection = db.get().collection(req.params.collection)
+        collection.updateOne({ "id": parseInt(req.body.id) }, { "$set": { "submitTime": req.body.time.toString() } }, (error, result) => {
+            if (error) {
+                res.send('{"error":"' + error + '"}')
+            } else {
+                res.send(result)
+            }
+        })
+    } catch (error) {
+        res.send('{"error":"' + error.message + '"}')
+    }
+})
+
+/**
+ * @api {post} /lab_api/:collection/insert Request to Insert Collection
+ * @apiName InsertCollection
+ * @apiGroup Collection
+ * @apiVersion 1.0.0
+ * 
+ * @apiParam {String} data new json data
+ * 
+ * @apiSuccess {json} info info after insert
+ * @apiError {json} error Error message of collection insert
+ * @apiSampleRequest /lab_api/v1/thesis/insert
+ * @apiSuccessExample Example Data on Success
+ * { "ok": 1, "n": 1 }
+ */
+router.post('/lab_api/v1/:collection/insert', (req, res) => {
+    try {
+        let collection = db.get().collection(req.params.collection)
+        collection.insertOne(JSON.parse(req.body.data.toString()), (error, result) => {
+            if (error) {
+                res.send('{"error":"' + error + '"}')
+            } else {
+                res.send(result)
+            }
+        })
     } catch (error) {
         res.send('{"error":"' + error.message + '"}')
     }

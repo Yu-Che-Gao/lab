@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
 const path = require('path')
+const bodyParser = require('body-parser')
 const db = require('./db.js')
 const port = process.env.PORT || 80
 const mongoURI = 'mongodb://localhost:27017/lab'
+
 
 db.connect(mongoURI, function (err) {
     if (err) {
@@ -14,6 +16,7 @@ db.connect(mongoURI, function (err) {
     }
 })
 
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(__dirname + '/public'))
 app.use(require('./controllers'))
 app.set('view engine', 'pug')

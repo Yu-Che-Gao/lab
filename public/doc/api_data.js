@@ -1,9 +1,70 @@
 define({ "api": [
   {
+    "type": "post",
+    "url": "/lab_api/:collection/insert",
+    "title": "Request to Insert Collection",
+    "name": "InsertCollection",
+    "group": "Collection",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "data",
+            "description": "<p>new json data</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "info",
+            "description": "<p>info after insert</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example Data on Success",
+          "content": "{ \"ok\": 1, \"n\": 1 }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "json",
+            "optional": false,
+            "field": "error",
+            "description": "<p>Error message of collection insert</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "/lab_api/v1/thesis/insert"
+      }
+    ],
+    "filename": "controllers/index.js",
+    "groupTitle": "Collection"
+  },
+  {
     "type": "get",
     "url": "/lab_api/:collection/select",
     "title": "Request Collection Info",
-    "name": "GetCollection",
+    "name": "SelectCollection",
     "group": "Collection",
     "version": "1.0.0",
     "success": {
@@ -49,6 +110,81 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "/lab_api/v1/thesis/select"
+      }
+    ],
+    "filename": "controllers/index.js",
+    "groupTitle": "Collection"
+  },
+  {
+    "type": "post",
+    "url": "/lab_api/:collection/update",
+    "title": "Request to Update Collection",
+    "name": "UpdateCollection",
+    "group": "Collection",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>new id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "time",
+            "description": "<p>new submit time</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "info",
+            "description": "<p>info after update</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example Data on Success",
+          "content": "{ \"ok\": 1, \"nModified\": 1, \"n\": 1 }",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "json",
+            "optional": false,
+            "field": "error",
+            "description": "<p>Error message of collection update</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Example Data on Error",
+          "content": "{ \"error\": \"Cannot read property 'id' of undefined\" }",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "/lab_api/v1/thesis/update"
       }
     ],
     "filename": "controllers/index.js",
