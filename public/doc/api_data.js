@@ -1,7 +1,7 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "/lab_api/:collection/insert",
+    "url": "/lab_api/v1/:collection/insert",
     "title": "Request to Insert Collection",
     "name": "InsertCollection",
     "group": "Collection",
@@ -62,7 +62,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": "/lab_api/:collection/select",
+    "url": "/lab_api/v1/:collection/select",
     "title": "Request Collection Info",
     "name": "SelectCollection",
     "group": "Collection",
@@ -117,8 +117,8 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": "/lab_api/:collection/update",
-    "title": "Request to Update Collection",
+    "url": "/lab_api/v1/:collection/updateTimeById",
+    "title": "Request to Update Time of Collection",
     "name": "UpdateCollection",
     "group": "Collection",
     "version": "1.0.0",
@@ -184,10 +184,40 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "/lab_api/v1/thesis/update"
+        "url": "/lab_api/v1/thesis/updateTimeById"
       }
     ],
     "filename": "controllers/index.js",
     "groupTitle": "Collection"
+  },
+  {
+    "type": "post",
+    "url": "/lab_api/v1/auth/login",
+    "title": "Request to Login",
+    "name": "Login",
+    "group": "auth",
+    "version": "1.0.0",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>username</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "password",
+            "description": "<p>password</p>"
+          }
+        ]
+      }
+    },
+    "filename": "controllers/index.js",
+    "groupTitle": "auth"
   }
 ] });

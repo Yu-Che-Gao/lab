@@ -1,13 +1,15 @@
 const express = require('express')
 const path = require('path')
+const Passport = require('passport')
 const db = require('../db.js')
+const auth = require('../models/auth.js')
 const router = express.Router()
 
 router.get('/lab', (req, res) => res.render('index'))
 router.get('/lab_api/doc', (req, res) => res.redirect('/doc'))
 
 /**
- * @api {get} /lab_api/:collection/select Request Collection Info
+ * @api {get} /lab_api/v1/:collection/select Request Collection Info
  * @apiName SelectCollection
  * @apiGroup Collection
  * @apiVersion 1.0.0
@@ -33,7 +35,7 @@ router.get('/lab_api/v1/:collection/select', (req, res) => {
 })
 
 /**
- * @api {post} /lab_api/:collection/update Request to Update Collection
+ * @api {post} /lab_api/v1/:collection/updateTimeById Request to Update Time of Collection
  * @apiName UpdateCollection
  * @apiGroup Collection
  * @apiVersion 1.0.0
@@ -43,7 +45,7 @@ router.get('/lab_api/v1/:collection/select', (req, res) => {
  * 
  * @apiSuccess {json} info info after update
  * @apiError {json} error Error message of collection update
- * @apiSampleRequest /lab_api/v1/thesis/update
+ * @apiSampleRequest /lab_api/v1/thesis/updateTimeById
  * 
  * @apiSuccessExample Example Data on Success
  * { "ok": 1, "nModified": 1, "n": 1 }
@@ -51,7 +53,7 @@ router.get('/lab_api/v1/:collection/select', (req, res) => {
  * @apiErrorExample Example Data on Error
  * { "error": "Cannot read property 'id' of undefined" }
  */
-router.post('/lab_api/v1/:collection/update', (req, res) => {
+router.post('/lab_api/v1/:collection/updateTimeById', (req, res) => {
     try {
         let collection = db.get().collection(req.params.collection)
         collection.updateOne({ "id": parseInt(req.body.id) }, { "$set": { "submitTime": req.body.time.toString() } }, (error, result) => {
@@ -67,7 +69,7 @@ router.post('/lab_api/v1/:collection/update', (req, res) => {
 })
 
 /**
- * @api {post} /lab_api/:collection/insert Request to Insert Collection
+ * @api {post} /lab_api/v1/:collection/insert Request to Insert Collection
  * @apiName InsertCollection
  * @apiGroup Collection
  * @apiVersion 1.0.0
@@ -95,4 +97,15 @@ router.post('/lab_api/v1/:collection/insert', (req, res) => {
     }
 })
 
+
+/**
+ * @api {post} /lab_api/v1/auth/login Request to Login
+ * @apiName Login
+ * @apiGroup auth
+ * @apiVersion 1.0.0
+ * 
+ * @apiParam {String} username username
+ * @apiParam {String} password password
+ */
+router.post('/lab_api/v1/auth/login', auth.login(), (req, res) => res.send('username:' + req.user[0].username))
 module.exports = router
