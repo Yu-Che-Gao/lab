@@ -1,6 +1,5 @@
 const express = require('express')
 const path = require('path')
-const Passport = require('passport')
 const db = require('../db.js')
 const auth = require('../models/auth.js')
 const router = express.Router()
@@ -101,11 +100,13 @@ router.post('/lab_api/v1/:collection/insert', (req, res) => {
 /**
  * @api {post} /lab_api/v1/auth/login Request to Login
  * @apiName Login
- * @apiGroup auth
+ * @apiGroup Auth
  * @apiVersion 1.0.0
  * 
  * @apiParam {String} username username
  * @apiParam {String} password password
  */
+
+router.get('/login_page', auth.isLogined, (req, res) => res.send('testing'))
 router.post('/lab_api/v1/auth/login', auth.login(), (req, res) => res.send('username:' + req.user[0].username))
 module.exports = router

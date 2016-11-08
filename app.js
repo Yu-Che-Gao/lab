@@ -10,8 +10,7 @@ const auth = require('./models/auth.js')
 const port = process.env.PORT || 80
 const mongoURI = 'mongodb://localhost:27017/lab'
 
-
-db.connect(mongoURI, function (err) {
+db.connect(mongoURI, (err) => {
     if (err) {
         console.log('Unable to connect to Mongo. Error: ' + err)
         process.exit(1)
@@ -22,7 +21,7 @@ db.connect(mongoURI, function (err) {
 
 app.use(cookieParser())
 app.use(bodyParser())
-app.use(session({ secret: 'lab secret' }));
+app.use(session({ secret: 'lab secret' }))
 app.use(Passport.initialize())
 app.use(Passport.session())
 app.use(bodyParser.urlencoded({ extended: true }))
