@@ -1,0 +1,67 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    title Sign-Up/Login Form
+    link(href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', href='/css/normalize.min.css')
+    link(rel='stylesheet', href='/css/login.css')
+  body
+    .form
+      ul.tab-group
+        li.tab
+          a(href='#signup') Sign Up
+        li.tab.active
+          a(href='#login') Log In
+      .tab-content
+        #login
+          h1 Welcome Back!
+          form(action='/lab_api/v1/auth/login', method='post')
+            .field-wrap
+              label
+                | Username
+                span.req *
+              |  
+              input(type='text', name='username', value='', required='', autocomplete='off')
+            .field-wrap
+              label
+                | Password
+                span.req *
+              |  
+              input(type='password', name='password', value='', required='', autocomplete='off')
+            p.forgot
+              a(href='#') Forgot Password?
+            |  
+            button.button.button-block Log In
+        #signup
+          h1 Sign Up for Free
+          form(action='/', method='post')
+            .top-row
+              .field-wrap
+                label
+                  | First Name
+                  span.req *
+                |  
+                input(type='text', required='', autocomplete='off')
+              .field-wrap
+                label
+                  | Last Name
+                  span.req *
+                |  
+                input(type='text', required='', autocomplete='off')
+            .field-wrap
+              label
+                | Email Address
+                span.req *
+              |  
+              input(type='email', required='', autocomplete='off')
+            .field-wrap
+              label
+                | Set A Password
+                span.req *
+              |  
+              input(type='password', required='', autocomplete='off')
+            |  
+            button.button.button-block(type='submit') Get Started
+    script(src='/js/jquery.min.js')
+    script(src='/js/login.js')

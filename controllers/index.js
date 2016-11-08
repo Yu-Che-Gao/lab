@@ -5,6 +5,7 @@ const auth = require('../models/auth.js')
 const router = express.Router()
 
 router.get('/lab', (req, res) => res.render('index'))
+router.get('/lab/login', (req, res) => res.render('login'))
 router.get('/lab_api/doc', (req, res) => res.redirect('/doc'))
 
 /**
@@ -96,7 +97,6 @@ router.post('/lab_api/v1/:collection/insert', (req, res) => {
     }
 })
 
-
 /**
  * @api {post} /lab_api/v1/auth/login Request to Login
  * @apiName Login
@@ -106,7 +106,15 @@ router.post('/lab_api/v1/:collection/insert', (req, res) => {
  * @apiParam {String} username username
  * @apiParam {String} password password
  */
-
-router.get('/login_page', auth.isLogined, (req, res) => res.send('testing'))
 router.post('/lab_api/v1/auth/login', auth.login(), (req, res) => res.send('username:' + req.user[0].username))
+
+/**
+ * @api {get} /lab_api/v1/auth/logout Request to Logout
+ * @apiName Logout
+ * @apiGroup Auth
+ * @apiVersion 1.0.0
+ * @apiParam {String} returnTo redirect url
+ */
+router.get('/lab_api/v1/auth/logout', auth.logout)
+
 module.exports = router

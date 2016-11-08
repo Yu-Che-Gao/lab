@@ -19,10 +19,15 @@ function login() {
 }
 
 function isLogined(req, res, next) {
-    if(typeof(req.user)==='undefined') return res.status(401).json({ error: 'User not authenticated' })
+    if (typeof (req.user) === 'undefined') return res.status(401).json({ error: 'User not authenticated' })
     else return next()
+}
+
+function logout(req, res) {
+    req.session.destroy((err) => res.redirect('/lab'))
 }
 
 exports.config = config
 exports.login = login
+exports.logout = logout
 exports.isLogined = isLogined
